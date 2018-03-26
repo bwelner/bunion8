@@ -26,7 +26,7 @@ public class SeriesInfo {
 	private Set<Rating> ratings = new HashSet<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "seriesInfo")
-	private Set<Rating> comments = new HashSet<>();
+	private Set<Comment> comments = new HashSet<>();
 
 
 	public Set<Rating> getRatings() {
@@ -43,6 +43,14 @@ public class SeriesInfo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public Long getId() {
