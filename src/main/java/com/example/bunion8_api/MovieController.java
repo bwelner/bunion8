@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class SeriesController {
+public class MovieController {
 	
 	@Autowired
-	private SeriesInfoRepository seriesInfoRepository;
+	private MovieInfoRepository movieInfoRepository;
 	
-	@GetMapping("/series")
-	public List<SeriesInfo> getSeriesInfo(){
-		return seriesInfoRepository.findAll();
+	@GetMapping("/movie")
+	public List<MovieInfo> getMovieInfo(){
+		return movieInfoRepository.findAll();
 	}
 	
 	@PostMapping("/movie")
-	public ResponseEntity<SeriesInfo> addSeries(@RequestBody SeriesInfo series) {
-		SeriesInfo addedSeries = seriesInfoRepository.save(series);
-		return ResponseEntity.ok(addedSeries);
+	public ResponseEntity<MovieInfo> addMovie(@RequestBody MovieInfo movie) {
+		MovieInfo addedMovie = movieInfoRepository.save(movie);
+		return ResponseEntity.ok(addedMovie);
 	}
 	
 	
 	@GetMapping("/test")
 	public String test() {
 		
-		SeriesInfo newSeries = new SeriesInfo();
-		newSeries.setName("Three Stooges");
+		MovieInfo newMovie = new MovieInfo();
+		newMovie.setName("Three Stooges");
 		
 		Rating rating = new Rating();
 		rating.setStars(5);
@@ -42,12 +42,12 @@ public class SeriesController {
 		Comment comment = new Comment();
 		comment.setBody("yuk yuk yuk");
 		
-		rating.setSeriesInfo(newSeries);
-		comment.setSeriesInfo(newSeries);
-		newSeries.getRatings().add(rating);
-		newSeries.getComments().add(comment);
+		rating.setMovieInfo(newMovie);
+		comment.setMovieInfo(newMovie);
+		newMovie.getRatings().add(rating);
+		newMovie.getComments().add(comment);
 		
-		seriesInfoRepository.save(newSeries);
+		movieInfoRepository.save(newMovie);
 		return "test";
 	}
 

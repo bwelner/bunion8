@@ -24,8 +24,8 @@ public class Rating {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "series_id", nullable = false)
-	private SeriesInfo seriesInfo;
+	@JoinColumn(name = "movie_id", nullable = false)
+	private MovieInfo movieInfo;
 
 	private int stars;
 
@@ -33,16 +33,16 @@ public class Rating {
 		return id;
 	}
 
-	public SeriesInfo getSeriesInfo() {
-		return seriesInfo;
+	public MovieInfo getMovieInfo() {
+		return movieInfo;
 	}
 
 	public int getStars() {
 		return stars;
 	}
 
-	public void setSeriesInfo(SeriesInfo seriesInfo) {
-		this.seriesInfo = seriesInfo;
+	public void setMovieInfo(MovieInfo movieInfo) {
+		this.movieInfo = movieInfo;
 	}
 
 	public void setStars(int stars) {
