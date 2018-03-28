@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,9 +26,11 @@ public class MovieInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private String backdropPath;
-	private String posterPath;
+	private String title;
+	private String backdrop_path;
+	private String poster_path;
+	
+	@Column(columnDefinition="TEXT")
 	private String overview;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movieInfo")
@@ -41,21 +44,31 @@ public class MovieInfo {
 		return ratings;
 	}
 
-	public String getBackdropPath() {
-		return backdropPath;
+	
+
+	public String getBackdrop_path() {
+		return backdrop_path;
 	}
 
-	public void setBackdropPath(String backdropPath) {
-		this.backdropPath = backdropPath;
+
+
+	public void setBackdrop_path(String backdrop_path) {
+		this.backdrop_path = backdrop_path;
 	}
 
-	public String getPosterPath() {
-		return posterPath;
+
+
+	public String getPoster_path() {
+		return poster_path;
 	}
 
-	public void setPosterPath(String posterPath) {
-		this.posterPath = posterPath;
+
+
+	public void setPoster_path(String poster_path) {
+		this.poster_path = poster_path;
 	}
+
+
 
 	public String getOverview() {
 		return overview;
@@ -69,12 +82,12 @@ public class MovieInfo {
 		this.ratings = ratings;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Set<Comment> getComments() {
